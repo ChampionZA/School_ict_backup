@@ -1,13 +1,14 @@
 childrenWantingToComeOnTrip = {}
 costOfCoach = 550
 costOfEntryTicket = 30
+amountOfStudentsGoing = 0
 
 while True:
-    usrChoice = input('Task 1 [1], Task 2 [2]: ')
+    usrChoice = input('Task 1 [1], Entering children [2]: ')
     if usrChoice == '1':
         while True:
             estimatedNumberOfStudentsTakingPart = int(input('How many students are going to be taking part: '))
-            if estimatedNumberOfStudentsTakingPart > 40:
+            if estimatedNumberOfStudentsTakingPart > 45:
                 print('Error: There are too many children taking part')
             elif estimatedNumberOfStudentsTakingPart <= 0:
                 print('Error: Why are you doing a trip when there are no kids?')
@@ -21,7 +22,7 @@ while True:
     if usrChoice == '2':
         while True:
             numStudentsWantToCome = int(input('How many students want to come?: '))
-            if numStudentsWantToCome > 40:
+            if numStudentsWantToCome > 45:
                 print('Error: amount of students over the limit')
             elif numStudentsWantToCome <= 0:
                 print('Error: You cant have no kids on the trip')
@@ -53,7 +54,12 @@ while True:
             elif wouldLikeAPrintout == 'n' or wouldLikeAPrintout == "N":
                 break
             else:
-                print('Error: entered option does not exist')    
+                print('Error: entered option does not exist')
+        for key in childrenWantingToComeOnTrip:
+            if childrenWantingToComeOnTrip[key] == True:
+                amountOfStudentsGoing += 1 
+            elif childrenWantingToComeOnTrip[key] == False:
+                pass
         
     if usrChoice == '69':
         print(childrenWantingToComeOnTrip)
