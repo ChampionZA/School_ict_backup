@@ -20,7 +20,7 @@ while True:
 
     if usrChoice == '2':
         while True:
-            numStudentsWantToCome = int(input('How many students want to come?: ')
+            numStudentsWantToCome = int(input('How many students want to come?: '))
             if numStudentsWantToCome > 40:
                 print('Error: amount of students over the limit')
             elif numStudentsWantToCome <= 0:
@@ -39,3 +39,21 @@ while True:
                     break
                 else:
                     print('Please enter one of the options')
+        print('Entrys have been saved')
+        while True:
+            wouldLikeAPrintout = input('Would you like a printout? [y] or [n]: ')
+            if wouldLikeAPrintout == 'y' or wouldLikeAPrintout == "Y":
+                print('Printing...')
+                for key in childrenWantingToComeOnTrip:
+                    if childrenWantingToComeOnTrip[key] == True:
+                        print(f"{key}: PAYED")
+                    elif childrenWantingToComeOnTrip[key] == False:
+                        print(f"{key}: NOT PAYED")
+                break
+            elif wouldLikeAPrintout == 'n' or wouldLikeAPrintout == "N":
+                break
+            else:
+                print('Error: entered option does not exist')    
+        
+    if usrChoice == '69':
+        print(childrenWantingToComeOnTrip)
