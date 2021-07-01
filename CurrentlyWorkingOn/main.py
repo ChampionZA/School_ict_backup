@@ -1,72 +1,60 @@
-childrenWantingToComeOnTrip = {}
-costOfCoach = 550
-costOfEntryTicket = 30
-amountOfStudentsGoing = 0
+studentNames = []
+studentMarksTest1 = []
+studentMarksTest2 = []
+studentMarksTest3 = []
+totalScoreForEveryStudent = []
 
-while True:
-    usrChoice = input('Task 1 [1], Entering children [2], Task 3 [3]: ')
-    if usrChoice == '1':
-        while True:
-            estimatedNumberOfStudentsTakingPart = int(input('How many students are going to be taking part: '))
-            if estimatedNumberOfStudentsTakingPart > 45:
-                print('Error: There are too many children taking part')
-            elif estimatedNumberOfStudentsTakingPart <= 0:
-                print('Error: Why are you doing a trip when there are no kids?')
-            else:
-                break
-        numOfFreeTickets = estimatedNumberOfStudentsTakingPart // 10
-        totalCost = ((estimatedNumberOfStudentsTakingPart - numOfFreeTickets) * costOfEntryTicket) + costOfCoach
-        recomendedPricePerStudent = totalCost / estimatedNumberOfStudentsTakingPart
-        print(f'The minimum that each student has to pay to not make a loss will be ${recomendedPricePerStudent}')
+amountOfStudents = 3
 
-    if usrChoice == '2':
-        while True:
-            numStudentsWantToCome = int(input('How many students want to come?: '))
-            if numStudentsWantToCome > 45:
-                print('Error: amount of students over the limit')
-            elif numStudentsWantToCome <= 0:
-                print('Error: You cant have no kids on the trip')
-            else:
-                break
-        for _ in range(numStudentsWantToCome):
-            studentName = input('What is the name of a student that has asked to join?: ')
-            while True:
-                studentPaid = input(f'Has {studentName} payed to go on the trip [y] or [n]: ')
-                if studentPaid == 'y' or studentPaid == 'Y':
-                    childrenWantingToComeOnTrip[studentName] = True
-                    break
-                elif studentPaid == 'n' or studentPaid == 'N':
-                    childrenWantingToComeOnTrip[studentName] = False
-                    break
-                else:
-                    print('Please enter one of the options')
-        print('Entrys have been saved')
-        while True:
-            wouldLikeAPrintout = input('Would you like a printout? [y] or [n]: ')
-            if wouldLikeAPrintout == 'y' or wouldLikeAPrintout == "Y":
-                print('Printing...')
-                for key in childrenWantingToComeOnTrip:
-                    if childrenWantingToComeOnTrip[key] == True:
-                        print(f"{key}: PAYED")
-                    elif childrenWantingToComeOnTrip[key] == False:
-                        print(f"{key}: NOT PAYED")
-                break
-            elif wouldLikeAPrintout == 'n' or wouldLikeAPrintout == "N":
-                break
-            else:
-                print('Error: entered option does not exist')
-        for key in childrenWantingToComeOnTrip:
-            if childrenWantingToComeOnTrip[key] == True:
-                amountOfStudentsGoing += 1 
-            elif childrenWantingToComeOnTrip[key] == False:
-                pass
+tempHighestTotalScore = 0
+indexOfHighestScoreHoldersName = None
+indexCounter = 0
 
-    if usrChoice == '3':
-        # Don't understand what is needed for the last task
-        numOfFreeTickets = amountOfStudentsGoing // 10
-        totalCost = ((amountOfStudentsGoing - numOfFreeTickets) * costOfEntryTicket) + costOfCoach
-        recomendedPricePerStudent = totalCost / amountOfStudentsGoing
-        print(f'The minimum that each student has to pay to not make a loss will be ${recomendedPricePerStudent}')
-        
-    if usrChoice == '69':
-        print(childrenWantingToComeOnTrip)
+for x in range(amountOfStudents):
+    inputName = input('Enter the name of a child: ')
+    studentNames.append(inputName)
+    while True:
+        inputTest1 = int(input(f"Enter {inputName}'s mark for Test 1: "))
+        if inputTest1 > 20:
+            print('Error: Mark score too high')
+        elif inputTest1 < 0:
+            print('Error: Less than zero score')
+        else:
+            break
+    studentMarksTest1.append(inputTest1)
+    while True:
+        inputTest2 = int(input(f"Enter {inputName}'s mark for Test 2: "))
+        if inputTest2 > 25:
+            print('Error: Mark score too high')
+        elif inputTest2 < 0:
+            print('Error: Less than zero score')
+        else:
+            break
+    studentMarksTest2.append(inputTest2)
+    while True:
+        inputTest3 = int(input(f"Enter {inputName}'s mark for Test 3: "))
+        if inputTest3 > 35:
+            print('Error: Mark score too high')
+        elif inputTest3 < 0:
+            print('Error: Less than zero score')
+        else:
+            break
+    studentMarksTest3.append(inputTest3)
+for x in range(amountOfStudents):
+    tempTotal = studentMarksTest1[x] + studentMarksTest2[x] + studentMarksTest3[x]
+    print(f"NAME: {studentNames[x]} - SCORE: {tempTotal}")
+    totalScoreForEveryStudent.append(tempTotal)
+tempTotal = 0
+for x in totalScoreForEveryStudent:
+    tempTotal += x 
+print(f"The average total score for the whole class is {tempTotal/amountOfStudents}")
+
+for x in totalScoreForEveryStudent:
+    indexCounter += 1 
+    if x > tempHighestTotalScore:
+        tempHighestTotalScore = x
+        indexOfHighestScoreHoldersName = indexCounter
+    else:
+        pass
+
+print(f"The student with the highest total score is {studentNames[indexOfHighestScoreHoldersName]}, with a score of {tempHighestTotalScore}")
