@@ -4,7 +4,7 @@ costOfEntryTicket = 30
 amountOfStudentsGoing = 0
 
 while True:
-    usrChoice = input('Task 1 [1], Entering children [2]: ')
+    usrChoice = input('Task 1 [1], Entering children [2], Task 3 [3]: ')
     if usrChoice == '1':
         while True:
             estimatedNumberOfStudentsTakingPart = int(input('How many students are going to be taking part: '))
@@ -60,6 +60,13 @@ while True:
                 amountOfStudentsGoing += 1 
             elif childrenWantingToComeOnTrip[key] == False:
                 pass
+
+    if usrChoice == '3':
+        # Don't understand what is needed for the last task
+        numOfFreeTickets = amountOfStudentsGoing // 10
+        totalCost = ((amountOfStudentsGoing - numOfFreeTickets) * costOfEntryTicket) + costOfCoach
+        recomendedPricePerStudent = totalCost / amountOfStudentsGoing
+        print(f'The minimum that each student has to pay to not make a loss will be ${recomendedPricePerStudent}')
         
     if usrChoice == '69':
         print(childrenWantingToComeOnTrip)
