@@ -4,11 +4,11 @@ studentMarksTest2 = []
 studentMarksTest3 = []
 totalScoreForEveryStudent = []
 
-amountOfStudents = 3
+amountOfStudents = 2
 
 tempHighestTotalScore = 0
 indexOfHighestScoreHoldersName = None
-indexCounter = 0
+indexCounter = -1
 
 for x in range(amountOfStudents):
     inputName = input('Enter the name of a child: ')
