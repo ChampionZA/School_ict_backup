@@ -1,26 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int big(int num1, int num2, int num3) {
-    if (num1 >= num2 && num1 >= num3) {
-        return num1;
-    } else if (num2 >= num1 && num2 >= num3) {
-        return num2;
-    } else {
-        return num3;
-    }
-}
-
 int main() {
-    
-    int usrNumEntry1;
-    int usrNumEntry2;
-    int usrNumEntry3;
 
-    printf("Please enter two numbers separated by a space: ");
-    scanf("%d%d%d", &usrNumEntry1, &usrNumEntry2, &usrNumEntry3);
+    int unknownNum = 7;
+    int usrGuess;
+    int attemptNum = 0;
 
-    printf("Answer: %d", big(usrNumEntry1, usrNumEntry2, usrNumEntry3));
+    while (1) {
+        if (usrGuess == unknownNum) {
+            printf("You have won the game GG");
+            break;
+        } else if (attemptNum >= 3) {
+            printf("You have lost the game lol get good");
+            break;
+        }
+        printf("Please enter you number: ");
+        scanf("%d", &usrGuess);
+        attemptNum++;
+    }
 
     return 0;
 }
