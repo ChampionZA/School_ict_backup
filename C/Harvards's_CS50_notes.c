@@ -2,6 +2,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+void cough(void)
+{
+    printf("cough\n");
+}
+
 int main(void) 
 {
     /*
@@ -9,9 +14,13 @@ int main(void)
     float y = get_float("Num2: ");
 
     printf("x/y: %.7f", x/y);
-    //             ^ the amount of decimal places   */
+    //             ^ the amount of decimal places   
+    */
 
-    // never comare floating point numbers due to precision errors
+
+        // never comare floating point numbers due to precision errors
+
+        // A float takes up about 32 bits of data on a normal computer but if you want twice as many bits then you can use a double!!;
 
     
 }
