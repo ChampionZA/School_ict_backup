@@ -6,55 +6,38 @@ int squareNum(int num);
 
 int main(void)
 {
-    int total = 0;
-    int amountOfNumsWithinUsrInput;
-    int usrNumInput;
+
+    int lenNum;
+    int usrEnteredNum;
+    int temp;
+
     while (true)
     {
-        usrNumInput = get_int("Please enter your number: ");
-
-        if (usrNumInput > 999)
+        usrEnteredNum = get_int("Enter your number: ");
+        if (usrEnteredNum < 0 || usrEnteredNum > 999)
         {
-            printf("Number entered is too big");
-        } 
-        else if (usrNumInput < 0)
-        {
-            printf("Number entered too small");
+            printf("Invalid input");
         }
-        else if (usrNumInput < 10)
+        else
         {
-            amountOfNumsWithinUsrInput = 1;
-            break;
-        }
-        else if (usrNumInput < 100)
-        {
-            amountOfNumsWithinUsrInput = 2;
-            break;
-        }
-        else if (usrNumInput < 1000)
-        {
-            amountOfNumsWithinUsrInput = 3;
             break;
         }
     }
 
-    string n = (string) usrNumInput;
-    for (int i = 0; i < amountOfNumsWithinUsrInput; i++)
+    lenNum = floor (log10 (abs (usrEnteredNum))) + 1;
+
+    for (int i = 0; i < lenNum; i++)
     {
-        int y = (int) n[i];
-        total += squareNum(y);
     }
 
-    if (total == usrNumInput)
-    {
-        printf("Entered number is an armstrong number");
-    } else 
-    {
-        printf("Entered number is not an armstrong number");
-    }
 }
 
-int squareNum(int num)
+int timesNum(int num, int powerOf)
 {
-    return num*num*num;
+    int total = 0;
+    for (int i = 0; i < powerOf; i++)
+    {
+        total *= num;
+    }
+    return total;
 }
