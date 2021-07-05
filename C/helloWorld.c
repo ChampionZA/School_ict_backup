@@ -1,43 +1,18 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <string.h>
 #include <cs50.c>
-
-int squareNum(int num);
+#include <stdio.h>
 
 int main(void)
 {
+    string s = get_string("", "s: ");
+    string j = get_string("", "j: ");
 
-    int lenNum;
-    int usrEnteredNum;
-    int temp;
-
-    while (true)
+    if (s == j)
     {
-        usrEnteredNum = get_int("Enter your number: ");
-        if (usrEnteredNum < 0 || usrEnteredNum > 999)
-        {
-            printf("Invalid input");
-        }
-        else
-        {
-            break;
-        }
+        printf("No Difference Detected");
     }
-
-    lenNum = floor (log10 (abs (usrEnteredNum))) + 1;
-
-    for (int i = 0; i < lenNum; i++)
+    else
     {
+        printf("Difference Detected");
     }
-
-}
-
-int timesNum(int num, int powerOf)
-{
-    int total = 0;
-    for (int i = 0; i < powerOf; i++)
-    {
-        total *= num;
-    }
-    return total;
 }
