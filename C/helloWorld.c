@@ -2,12 +2,14 @@
 #include <cs50.c>
 #include <stdio.h>
 
+bool String_Difference_Checker(char * a, char * b);
+
 int main(void)
 {
-    string s = get_string("", "s: ");
-    string j = get_string("", "j: ");
+    char * s = get_string("", "s: ");
+    char * j = get_string("", "j: ");
 
-    if (s == j)
+    if (String_Difference_Checker(s, j))
     {
         printf("No Difference Detected");
     }
@@ -15,4 +17,22 @@ int main(void)
     {
         printf("Difference Detected");
     }
+}
+
+bool String_Difference_Checker(char * a, char * b)
+{
+    if (strlen(a) != strlen(b))
+    {
+        return false;
+    }
+
+    for (int i = 0, n = strlen(b); i < n; i++)
+    {
+        if (a[i] != b[i])
+        {
+            return false;
+        }
+    }
+
+    return true;
 }
